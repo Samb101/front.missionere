@@ -2,9 +2,9 @@ import http from 'axios';
 import LoginPage from './pages/LoginPage';
 
 class LoginResource {
-    constructor () {
+    constructor() {
         this.URL = '/api'
-    } 
+    }
 
     login = (username, password, email) => {
         console.log('enter')
@@ -23,9 +23,9 @@ class LoginResource {
             });
     }
 
-    logout = () => {}
+    logout = () => { }
 
-    refreshToken = () => {}
+    refreshToken = () => { }
 }
 
 export default LoginResource
