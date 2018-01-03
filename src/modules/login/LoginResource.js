@@ -1,5 +1,4 @@
 import http from 'axios';
-import LoginPage from './pages/LoginPage';
 
 class LoginResource {
     constructor() {
