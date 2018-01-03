@@ -1,28 +1,26 @@
 import React, { Component } from 'react';
-import axios from 'axios';
+import LoginResource from './../LoginResource';
 
 class LoginPage extends Component {
+  constructor () {
+    super()
+    this.loginResource = new LoginResource()
+  }
   login = () => {
-    axios.post('/api/authenticate', {
-      username:'jeff',
-      password:'jeff'
-    })
-      .then(function (response) {
-        console.log(response);
-      })
-      .catch(function (error) {
-        console.log("Erreur", error);
-      });
+     const username = document.getElementById('username').value
+     const password =  document.getElementById('password').value
+     const email = 'onsen@fou.fr'
+     this.loginResource.login(username, password, email)
   }
 
   render() {
     return (
       <div className="container">
-        <form className="form-horizontal" role="form" method="POST" action="/login">
+        <form className="form-horizontal">
           <div className="row">
             <div className="col-md-3"></div>
             <div className="col-md-6">
-              <h2>Please Login</h2>
+              <h2>Login</h2>
               <hr/>
               </div>
             </div>
@@ -38,13 +36,6 @@ class LoginPage extends Component {
                       </div>
                   </div>
                 </div>
-                <div className="col-md-3">
-                  <div className="form-control-feedback">
-                    <span className="text-danger align-middle">
-                      <i className="fa fa-close"></i> Example error message
-                      </span>
-                  </div>
-                </div>
               </div>
               <div className="row">
                 <div className="col-md-3"></div>
@@ -58,31 +49,11 @@ class LoginPage extends Component {
                       </div>
                     </div>
                   </div>
-                  <div className="col-md-3">
-                    <div className="form-control-feedback">
-                      <span className="text-danger align-middle">
-                        Put password error message here
-                      </span>
-                    </div>
-                  </div>
                 </div>
-                <div className="row">
-                  <div className="col-md-3"></div>
-                  <div className="col-md-6">
-                    <div className="form-check mb-2 mr-sm-2 mb-sm-0">
-                      <label className="form-check-label">
-                        <input className="form-check-input" name="remember"
-                          type="checkbox" />
-                          <span>Remember me</span>
-                      </label>
-                  </div>
-                    </div>
-                  </div>
                   <div className="row">
                     <div className="col-md-3"></div>
                     <div className="col-md-6">
-                      <button type="submit" className="btn btn-success" onClick={()=>this.login()}><i className="fa fa-sign-in"></i> Login</button>
-                      <a className="btn btn-link" href="/password/reset">Forgot Your Password?</a>
+                      <button className="btn btn-success" onClick={() => this.login()}><i className="fa fa-sign-in"></i> Login</button>
                     </div>
                   </div>
                 </form>
@@ -91,4 +62,4 @@ class LoginPage extends Component {
   }
 }
 
-export default LoginPage;
+export default LoginPage
